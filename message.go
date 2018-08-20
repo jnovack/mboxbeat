@@ -10,15 +10,21 @@ import (
 
 type Message struct {
     Header Header
-    Bodies []*Body
+    Body   []*Body
+    Files  []*File
 }
 
 type Header map[string][]string
 
+type File struct {
+    FileName    string
+    ContentType string `json:"Content-Type"`
+    Content     io.Reader
+}
+
 type Body struct {
-    Header   Header
-    FileName string
-    Content  io.Reader
+    ContentType string `json:"Content-Type"`
+    Content     string
 }
 
 func (h Header) Get(key string) string {
@@ -36,18 +42,19 @@ func (h Header) Del(key string) {
     delete(h, http.CanonicalHeaderKey(key))
 }
 
-func newBodyByPart(part *multipart.Part) *Body {
-    body := &Body{
-        Header:   Header{},
+func newFileByPart(part *multipart.Part) *File {
+    headers := make(map[string][]string)
+    file := &File{
         FileName: "",
+        ContentType: "",
         Content:  nil,
     }
 
     for k, v := range part.Header {
-        body.Header[http.CanonicalHeaderKey(k)] = decodeHeaders(v)
+        headers[http.CanonicalHeaderKey(k)] = decodeHeaders(v)
     }
 
-    body.FileName = decodeHeader(part.FileName())
+    file.FileName = decodeHeader(part.FileName())
 
     buf := bytes.NewBuffer([]byte{})
     _, err := io.Copy(buf, part)
@@ -55,44 +62,41 @@ func newBodyByPart(part *multipart.Part) *Body {
         return nil
     }
 
-    mediaType, params, err := mime.ParseMediaType(body.Header.Get("Content-Type"))
+    mediaType, params, err := mime.ParseMediaType(headers["Content-Type"][0])
     if err != nil {
         return nil
     }
 
     charset := params["charset"]
-    encoding := body.Header.Get("Content-Transfer-Encoding")
+    encoding := headers["Content-Transfer-Encoding"][0]
 
-    body.Header.Set("Content-Type", mediaType)
+    file.ContentType = mediaType
 
-    body.Content = newDecoder(buf, charset, encoding)
+    file.Content = newDecoder(buf, charset, encoding)
 
-    return body
+    return file
 }
 
-func newBodyByMessage(message *Message, r io.Reader) *Body {
+func newBodyByMessage(message *Message, header string, r io.Reader) *Body {
     body := &Body{
-        Header:   Header{},
-        FileName: "",
-        Content:  nil,
+        ContentType:     "",
+        Content:         "",
     }
 
-    for _, k := range []string{"Content-Type", "Content-Transfer-Encoding"} {
-        body.Header.Set(k, message.Header.Get(k))
-        message.Header.Del(k)
-    }
-
-    mediaType, params, err := mime.ParseMediaType(body.Header.Get("Content-Type"))
+    mediaType, params, err := mime.ParseMediaType(header)
     if err != nil {
         return nil
     }
 
     charset := params["charset"]
-    encoding := body.Header.Get("Content-Transfer-Encoding")
+    encoding := message.Header.Get("Content-Transfer-Encoding")
 
-    body.Header.Set("Content-Type", mediaType)
+    body.ContentType = mediaType
 
-    body.Content = newDecoder(r, charset, encoding)
+    buf := new(bytes.Buffer)
+    buf.ReadFrom(newDecoder(r, charset, encoding))
+
+    body.Content = buf.String()
 
     return body
 }
