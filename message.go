@@ -1,6 +1,8 @@
 package main
 
 import (
+    "encoding/hex"
+    "crypto/sha256"
     "bytes"
     "io"
     "mime"
@@ -20,11 +22,13 @@ type File struct {
     FileName    string
     ContentType string `json:"Content-Type"`
     Content     io.Reader
+    Base64      string `json:"base64"`
+    Sha256      string `json:"sha256"`
 }
 
 type Body struct {
     ContentType string `json:"Content-Type"`
-    Content     string
+    Text        string
 }
 
 func (h Header) Get(key string) string {
@@ -42,13 +46,16 @@ func (h Header) Del(key string) {
     delete(h, http.CanonicalHeaderKey(key))
 }
 
-func newFileByPart(part *multipart.Part) *File {
+func newFile(part *multipart.Part) *File {
     headers := make(map[string][]string)
     file := &File{
-        FileName: "",
+        FileName:    "",
         ContentType: "",
-        Content:  nil,
+        Content:     nil,
+        Base64:      "",
+        Sha256:      "",
     }
+    hash := sha256.New()
 
     for k, v := range part.Header {
         headers[http.CanonicalHeaderKey(k)] = decodeHeaders(v)
@@ -56,8 +63,11 @@ func newFileByPart(part *multipart.Part) *File {
 
     file.FileName = decodeHeader(part.FileName())
 
-    buf := bytes.NewBuffer([]byte{})
-    _, err := io.Copy(buf, part)
+    buf1 := bytes.NewBuffer([]byte{})
+    buf2 := bytes.NewBuffer([]byte{})
+
+    writer := io.MultiWriter(hash, buf1, buf2)
+    _, err := io.Copy(writer, part)
     if err != nil {
         return nil
     }
@@ -72,15 +82,19 @@ func newFileByPart(part *multipart.Part) *File {
 
     file.ContentType = mediaType
 
-    file.Content = newDecoder(buf, charset, encoding)
+    file.Content = newDecoder(buf1, charset, encoding)
+
+    file.Base64 = base64Encode(newDecoder(buf2, charset, encoding))
+
+    file.Sha256 = hex.EncodeToString(hash.Sum(nil))
 
     return file
 }
 
-func newBodyByMessage(message *Message, header string, r io.Reader) *Body {
+func newBody(message *Message, header string, r io.Reader) *Body {
     body := &Body{
-        ContentType:     "",
-        Content:         "",
+        ContentType: "",
+        Text:        "",
     }
 
     mediaType, params, err := mime.ParseMediaType(header)
@@ -96,7 +110,7 @@ func newBodyByMessage(message *Message, header string, r io.Reader) *Body {
     buf := new(bytes.Buffer)
     buf.ReadFrom(newDecoder(r, charset, encoding))
 
-    body.Content = buf.String()
+    body.Text = buf.String()
 
     return body
 }
