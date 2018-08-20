@@ -45,12 +45,12 @@ func main() {
         if mbox, err := ReadFile(arg); err == nil {
             for _, mail := range mbox.Messages {
 
-                b, err := json.Marshal(mail)
+                j, err := json.Marshal(mail)
                 if err != nil {
                     fmt.Println(err)
                     return
                 }
-                fmt.Println(string(b))
+                fmt.Println(string(j))
 
                 // for k, vs := range mail.Header {
                 //     for _, v := range vs {

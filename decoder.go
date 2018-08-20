@@ -18,7 +18,8 @@ var encodedHeaderRegexp = regexp.MustCompile("\\=\\?([^?]+)\\?([BQ])\\?(.*?)\\?\
 func Decode(msg *mail.Message) *Message {
     message := &Message{
         Header: Header{},
-        Bodies: []*Body{},
+        Body:   []*Body{},
+        Files:  []*File{},
     }
 
     for key, header := range msg.Header {
@@ -42,14 +43,21 @@ func Decode(msg *mail.Message) *Message {
                 break
             }
 
-            message.Bodies = append(message.Bodies, newBodyByPart(p))
+            part := newFileByPart(p)
+
+            if part.FileName == "" {
+                message.Body = append(message.Body, newBodyByMessage(message, part.ContentType, part.Content))
+            } else {
+                message.Files = append(message.Files, part)
+            }
+
 
             if err != nil {
                 break
             }
         }
     } else {
-        message.Bodies = []*Body{newBodyByMessage(message, msg.Body)}
+        message.Body = []*Body{newBodyByMessage(message, message.Header.Get("Content-Type"), msg.Body)}
     }
 
     return message

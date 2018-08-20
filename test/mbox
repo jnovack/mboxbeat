@@ -1,59 +1,3 @@
-From root@rsyslog.phillypark.net  Mon Aug 20 11:01:01 2018
-Return-Path: <root@rsyslog.phillypark.net>
-X-Original-To: root
-Delivered-To: root@rsyslog.phillypark.net
-Received: by rsyslog.phillypark.net (Postfix, from userid 0)
-	id 7E95620897D5; Mon, 20 Aug 2018 11:01:01 -0400 (EDT)
-From: "(Cron Daemon)" <root@rsyslog.phillypark.net>
-To: root@rsyslog.phillypark.net
-Subject: Cron <root@rsyslog> run-parts /etc/cron.hourly
-Content-Type: text/plain; charset=UTF-8
-Auto-Submitted: auto-generated
-Precedence: bulk
-X-Cron-Env: <XDG_SESSION_ID=731>
-X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/0>
-X-Cron-Env: <LANG=en_US.UTF-8>
-X-Cron-Env: <SHELL=/bin/bash>
-X-Cron-Env: <PATH=/sbin:/bin:/usr/sbin:/usr/bin>
-X-Cron-Env: <MAILTO=root>
-X-Cron-Env: <HOME=/root>
-X-Cron-Env: <LOGNAME=root>
-X-Cron-Env: <USER=root>
-Message-Id: <20180820150101.7E95620897D5@rsyslog.phillypark.net>
-Date: Mon, 20 Aug 2018 11:01:01 -0400 (EDT)
-
-/etc/cron.hourly/autocommit:
-
-Everything up-to-date
-
-From root@rsyslog.phillypark.net  Mon Aug 20 12:01:02 2018
-Return-Path: <root@rsyslog.phillypark.net>
-X-Original-To: root
-Delivered-To: root@rsyslog.phillypark.net
-Received: by rsyslog.phillypark.net (Postfix, from userid 0)
-	id 2D3A020897C1; Mon, 20 Aug 2018 12:01:02 -0400 (EDT)
-From: "(Cron Daemon)" <root@rsyslog.phillypark.net>
-To: root@rsyslog.phillypark.net
-Subject: Cron <root@rsyslog> run-parts /etc/cron.hourly
-Content-Type: text/plain; charset=UTF-8
-Auto-Submitted: auto-generated
-Precedence: bulk
-X-Cron-Env: <XDG_SESSION_ID=738>
-X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/0>
-X-Cron-Env: <LANG=en_US.UTF-8>
-X-Cron-Env: <SHELL=/bin/bash>
-X-Cron-Env: <PATH=/sbin:/bin:/usr/sbin:/usr/bin>
-X-Cron-Env: <MAILTO=root>
-X-Cron-Env: <HOME=/root>
-X-Cron-Env: <LOGNAME=root>
-X-Cron-Env: <USER=root>
-Message-Id: <20180820160102.2D3A020897C1@rsyslog.phillypark.net>
-Date: Mon, 20 Aug 2018 12:01:02 -0400 (EDT)
-
-/etc/cron.hourly/autocommit:
-
-Everything up-to-date
-
 From root@rsyslog.phillypark.net  Mon Aug 20 13:01:01 2018
 Return-Path: <root@rsyslog.phillypark.net>
 X-Original-To: root
@@ -82,3 +26,38 @@ Date: Mon, 20 Aug 2018 13:01:01 -0400 (EDT)
 
 Everything up-to-date
 
+From root@esnode1.phillypark.net  Mon Aug 20 15:10:21 2018
+Return-Path: <root@esnode1.phillypark.net>
+X-Original-To: node@localhost
+Delivered-To: node@localhost.phillypark.net
+Received: by esnode1.phillypark.net (Postfix, from userid 0)
+    id 558F540A1087; Mon, 20 Aug 2018 15:10:21 -0400 (EDT)
+Date: Mon, 20 Aug 2018 15:10:21 -0400
+To: node@localhost.phillypark.net
+Subject: This is a subject line
+User-Agent: Heirloom mailx 12.5 7/5/10
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="=_5b7b121d.c6BdqrtkRqwfNmV5+T958yX/Q/hQeZlktNIZv9eDI1Jz6Lp/"
+Message-Id: <20180820191021.558F540A1087@esnode1.phillypark.net>
+From: root@esnode1.phillypark.net (root)
+
+This is a multi-part message in MIME format.
+
+--=_5b7b121d.c6BdqrtkRqwfNmV5+T958yX/Q/hQeZlktNIZv9eDI1Jz6Lp/
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+This should be the body
+
+--=_5b7b121d.c6BdqrtkRqwfNmV5+T958yX/Q/hQeZlktNIZv9eDI1Jz6Lp/
+Content-Type: text/plain;
+ charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="notes.txt"
+
+https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-4-on-centos-7
+
+--=_5b7b121d.c6BdqrtkRqwfNmV5+T958yX/Q/hQeZlktNIZv9eDI1Jz6Lp/--
