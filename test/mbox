@@ -1,0 +1,84 @@
+From root@rsyslog.phillypark.net  Mon Aug 20 11:01:01 2018
+Return-Path: <root@rsyslog.phillypark.net>
+X-Original-To: root
+Delivered-To: root@rsyslog.phillypark.net
+Received: by rsyslog.phillypark.net (Postfix, from userid 0)
+	id 7E95620897D5; Mon, 20 Aug 2018 11:01:01 -0400 (EDT)
+From: "(Cron Daemon)" <root@rsyslog.phillypark.net>
+To: root@rsyslog.phillypark.net
+Subject: Cron <root@rsyslog> run-parts /etc/cron.hourly
+Content-Type: text/plain; charset=UTF-8
+Auto-Submitted: auto-generated
+Precedence: bulk
+X-Cron-Env: <XDG_SESSION_ID=731>
+X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/0>
+X-Cron-Env: <LANG=en_US.UTF-8>
+X-Cron-Env: <SHELL=/bin/bash>
+X-Cron-Env: <PATH=/sbin:/bin:/usr/sbin:/usr/bin>
+X-Cron-Env: <MAILTO=root>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+Message-Id: <20180820150101.7E95620897D5@rsyslog.phillypark.net>
+Date: Mon, 20 Aug 2018 11:01:01 -0400 (EDT)
+
+/etc/cron.hourly/autocommit:
+
+Everything up-to-date
+
+From root@rsyslog.phillypark.net  Mon Aug 20 12:01:02 2018
+Return-Path: <root@rsyslog.phillypark.net>
+X-Original-To: root
+Delivered-To: root@rsyslog.phillypark.net
+Received: by rsyslog.phillypark.net (Postfix, from userid 0)
+	id 2D3A020897C1; Mon, 20 Aug 2018 12:01:02 -0400 (EDT)
+From: "(Cron Daemon)" <root@rsyslog.phillypark.net>
+To: root@rsyslog.phillypark.net
+Subject: Cron <root@rsyslog> run-parts /etc/cron.hourly
+Content-Type: text/plain; charset=UTF-8
+Auto-Submitted: auto-generated
+Precedence: bulk
+X-Cron-Env: <XDG_SESSION_ID=738>
+X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/0>
+X-Cron-Env: <LANG=en_US.UTF-8>
+X-Cron-Env: <SHELL=/bin/bash>
+X-Cron-Env: <PATH=/sbin:/bin:/usr/sbin:/usr/bin>
+X-Cron-Env: <MAILTO=root>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+Message-Id: <20180820160102.2D3A020897C1@rsyslog.phillypark.net>
+Date: Mon, 20 Aug 2018 12:01:02 -0400 (EDT)
+
+/etc/cron.hourly/autocommit:
+
+Everything up-to-date
+
+From root@rsyslog.phillypark.net  Mon Aug 20 13:01:01 2018
+Return-Path: <root@rsyslog.phillypark.net>
+X-Original-To: root
+Delivered-To: root@rsyslog.phillypark.net
+Received: by rsyslog.phillypark.net (Postfix, from userid 0)
+	id B3E5220897D5; Mon, 20 Aug 2018 13:01:01 -0400 (EDT)
+From: "(Cron Daemon)" <root@rsyslog.phillypark.net>
+To: root@rsyslog.phillypark.net
+Subject: Cron <root@rsyslog> run-parts /etc/cron.hourly
+Content-Type: text/plain; charset=UTF-8
+Auto-Submitted: auto-generated
+Precedence: bulk
+X-Cron-Env: <XDG_SESSION_ID=745>
+X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/0>
+X-Cron-Env: <LANG=en_US.UTF-8>
+X-Cron-Env: <SHELL=/bin/bash>
+X-Cron-Env: <PATH=/sbin:/bin:/usr/sbin:/usr/bin>
+X-Cron-Env: <MAILTO=root>
+X-Cron-Env: <HOME=/root>
+X-Cron-Env: <LOGNAME=root>
+X-Cron-Env: <USER=root>
+Message-Id: <20180820170101.B3E5220897D5@rsyslog.phillypark.net>
+Date: Mon, 20 Aug 2018 13:01:01 -0400 (EDT)
+
+/etc/cron.hourly/autocommit:
+
+Everything up-to-date
+
