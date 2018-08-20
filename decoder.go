@@ -43,10 +43,10 @@ func Decode(msg *mail.Message) *Message {
                 break
             }
 
-            part := newFileByPart(p)
+            part := newFile(p)
 
             if part.FileName == "" {
-                message.Body = append(message.Body, newBodyByMessage(message, part.ContentType, part.Content))
+                message.Body = append(message.Body, newBody(message, part.ContentType, part.Content))
             } else {
                 message.Files = append(message.Files, part)
             }
@@ -57,7 +57,7 @@ func Decode(msg *mail.Message) *Message {
             }
         }
     } else {
-        message.Body = []*Body{newBodyByMessage(message, message.Header.Get("Content-Type"), msg.Body)}
+        message.Body = []*Body{newBody(message, message.Header.Get("Content-Type"), msg.Body)}
     }
 
     return message
@@ -107,4 +107,12 @@ func newDecoder(r io.Reader, charset string, encoder string) io.Reader {
         r = quotedprintable.NewReader(r)
     }
     return r
+}
+
+func base64Encode(body io.Reader) string {
+    w := &bytes.Buffer{}
+    if _, err := io.Copy(w, body); err != nil {
+        panic(err)
+    }
+    return base64.StdEncoding.EncodeToString(w.Bytes())
 }
