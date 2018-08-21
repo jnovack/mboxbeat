@@ -66,6 +66,29 @@ func Decode(msg *mail.Message) *Message {
         message.Header[k] = message.XHeader.Get(k)
         message.XHeader.Del(k)
     }
+
+    // Parse Singles
+    for _, k := range []string{"From", "Return-Path"} {
+        email, err := mail.ParseAddress(message.Header[k])
+        if err != nil {
+            break
+        }
+        message.Header[k] = email.Address
+    }
+
+    // Create Proper maps for To and CC
+    for _, k := range []string{"To", "CC"} {
+        if s, ok := message.XHeader[k]; ok && len(s[0]) > 0 {
+            message.XHeader[k] = nil
+            emails, err := mail.ParseAddressList(s[0])
+            if err != nil {
+                break
+            }
+
+            for _, v := range emails {
+                message.XHeader[k] = append(message.XHeader[k], v.Address)
+            }
+        }
     }
 
     return message
