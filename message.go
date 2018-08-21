@@ -11,12 +11,14 @@ import (
 )
 
 type Message struct {
-    Header Header
-    Body   []*Body
-    Files  []*File
+    Header  Header
+    XHeader XHeader
+    Body    []*Body
+    Files   []*File
 }
 
-type Header map[string][]string
+type Header map[string]string
+type XHeader map[string][]string
 
 type File struct {
     FileName    string
@@ -31,18 +33,18 @@ type Body struct {
     Text        string
 }
 
-func (h Header) Get(key string) string {
+func (h XHeader) Get(key string) string {
     if s, ok := h[http.CanonicalHeaderKey(key)]; ok && len(s) > 0 {
         return s[0]
     }
     return ""
 }
 
-func (h Header) Set(key, val string) {
+func (h XHeader) Set(key, val string) {
     h[http.CanonicalHeaderKey(key)] = []string{val}
 }
 
-func (h Header) Del(key string) {
+func (h XHeader) Del(key string) {
     delete(h, http.CanonicalHeaderKey(key))
 }
 
@@ -102,7 +104,7 @@ func newBody(message *Message, header string, r io.Reader) *Body {
     }
 
     charset := params["charset"]
-    encoding := message.Header.Get("Content-Transfer-Encoding")
+    encoding := message.XHeader.Get("Content-Transfer-Encoding")
 
     body.ContentType = mediaType
 

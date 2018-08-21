@@ -17,22 +17,23 @@ var encodedHeaderRegexp = regexp.MustCompile("\\=\\?([^?]+)\\?([BQ])\\?(.*?)\\?\
 
 func Decode(msg *mail.Message) *Message {
     message := &Message{
-        Header: Header{},
-        Body:   []*Body{},
-        Files:  []*File{},
+        Header:  Header{},
+        XHeader: XHeader{},
+        Body:    []*Body{},
+        Files:   []*File{},
     }
 
     for key, header := range msg.Header {
-        message.Header[http.CanonicalHeaderKey(key)] = decodeHeaders(header)
+        message.XHeader[http.CanonicalHeaderKey(key)] = decodeHeaders(header)
     }
 
-    mediaType, params, err := mime.ParseMediaType(message.Header.Get("Content-Type"))
+    mediaType, params, err := mime.ParseMediaType(message.XHeader.Get("Content-Type"))
     if err != nil {
         return message
     }
 
     if strings.HasPrefix(mediaType, "multipart/") {
-        message.Header.Set("Content-Type", mediaType)
+        message.XHeader.Set("Content-Type", mediaType)
         mr := multipart.NewReader(msg.Body, params["boundary"])
         for {
             p, err := mr.NextPart()
@@ -57,7 +58,8 @@ func Decode(msg *mail.Message) *Message {
             }
         }
     } else {
-        message.Body = []*Body{newBody(message, message.Header.Get("Content-Type"), msg.Body)}
+        message.Body = []*Body{newBody(message, message.XHeader.Get("Content-Type"), msg.Body)}
+    }
     }
 
     return message
