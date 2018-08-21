@@ -4,6 +4,7 @@ import (
     "bytes"
     "encoding/base64"
     "io"
+    "io/ioutil"
     "mime"
     "mime/multipart"
     "mime/quotedprintable"
@@ -138,6 +139,14 @@ func newDecoder(r io.Reader, charset string, encoder string) io.Reader {
         r = quotedprintable.NewReader(r)
     }
     return r
+}
+
+func base64Decode(file io.Reader) []byte {
+    asBytes, err := ioutil.ReadAll(base64.NewDecoder(base64.StdEncoding, file))
+    if err != nil {
+        return nil
+    }
+    return asBytes
 }
 
 func base64Encode(body io.Reader) string {
