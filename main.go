@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "github.com/blabber/mbox"
+    "github.com/ProtonMail/go-mbox"
     "encoding/json"
     "io"
     "os"
