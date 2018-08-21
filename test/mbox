@@ -33,7 +33,7 @@ Delivered-To: jnovack@localhost
 Received: by example.localdomain (Postfix, from userid 0)
     id 558F540A1087; Mon, 20 Aug 2018 15:10:21 -0400 (EDT)
 Date: Mon, 20 Aug 2018 15:10:21 -0400
-To: jnovack@localhost
+To: jnovack@localhost, "Root" <root@localhost>
 Subject: This is a subject line
 User-Agent: Heirloom mailx 12.5 7/5/10
 MIME-Version: 1.0
