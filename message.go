@@ -23,7 +23,7 @@ type XHeader map[string][]string
 type File struct {
     FileName    string
     ContentType string `json:"Content-Type"`
-    Content     io.Reader
+    Content     io.Reader `json:"-"`
     Base64      string `json:"base64"`
     Sha256      string `json:"sha256"`
 }
