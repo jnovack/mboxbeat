@@ -61,17 +61,6 @@ func newFile(part *multipart.Part) *File {
         headers[http.CanonicalHeaderKey(k)] = decodeHeaders(v)
     }
 
-    file.FileName = decodeHeader(part.FileName())
-
-    buf1 := bytes.NewBuffer([]byte{})
-    buf2 := bytes.NewBuffer([]byte{})
-
-    writer := io.MultiWriter(hash, buf1, buf2)
-    _, err := io.Copy(writer, part)
-    if err != nil {
-        return nil
-    }
-
     mediaType, params, err := mime.ParseMediaType(headers["Content-Type"][0])
     if err != nil {
         return nil
@@ -81,6 +70,16 @@ func newFile(part *multipart.Part) *File {
     encoding := headers["Content-Transfer-Encoding"][0]
 
     file.ContentType = mediaType
+
+    file.FileName = decodeHeader(part.FileName())
+
+    buf1 := bytes.NewBuffer([]byte{})
+    buf2 := bytes.NewBuffer([]byte{})
+
+    writer := io.MultiWriter(hash, buf1, buf2)
+    if _, err := io.Copy(writer, part); err != nil {
+        return nil
+    }
 
     file.Content = newDecoder(buf1, charset, encoding)
 
