@@ -1,6 +1,7 @@
 package main
 
 import (
+    "bufio"
     "encoding/hex"
     "crypto/sha256"
     "bytes"
@@ -8,6 +9,7 @@ import (
     "mime"
     "mime/multipart"
     "net/http"
+    "os"
 )
 
 type Message struct {
@@ -79,8 +81,11 @@ func newFile(part *multipart.Part) *File {
     buf2 := bytes.NewBuffer([]byte{})
     buf3 := bytes.NewBuffer([]byte{})
 
-    if _, err := io.Copy(writer, part); err != nil {
+    pagesize := os.Getpagesize()
+    reader := bufio.NewReaderSize(part, pagesize)
+
     writer := io.MultiWriter(buf1, buf2, buf3)
+    if _, err := io.Copy(writer, reader); err != nil {
         return nil
     }
 
