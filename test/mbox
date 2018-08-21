@@ -1,12 +1,12 @@
-From root@rsyslog.phillypark.net  Mon Aug 20 13:01:01 2018
-Return-Path: <root@rsyslog.phillypark.net>
+From root@example.localdomain  Mon Aug 20 13:01:01 2018
+Return-Path: <root@example.localdomain>
 X-Original-To: root
-Delivered-To: root@rsyslog.phillypark.net
-Received: by rsyslog.phillypark.net (Postfix, from userid 0)
+Delivered-To: root@example.localdomain
+Received: by example.localdomain (Postfix, from userid 0)
 	id B3E5220897D5; Mon, 20 Aug 2018 13:01:01 -0400 (EDT)
-From: "(Cron Daemon)" <root@rsyslog.phillypark.net>
-To: root@rsyslog.phillypark.net
-Subject: Cron <root@rsyslog> run-parts /etc/cron.hourly
+From: "(Cron Daemon)" <root@example.localdomain>
+To: root@example.localdomain
+Subject: Cron <root@example> run-parts /etc/cron.hourly
 Content-Type: text/plain; charset=UTF-8
 Auto-Submitted: auto-generated
 Precedence: bulk
@@ -19,28 +19,28 @@ X-Cron-Env: <MAILTO=root>
 X-Cron-Env: <HOME=/root>
 X-Cron-Env: <LOGNAME=root>
 X-Cron-Env: <USER=root>
-Message-Id: <20180820170101.B3E5220897D5@rsyslog.phillypark.net>
+Message-Id: <20180820170101.B3E5220897D5@example.localdomain>
 Date: Mon, 20 Aug 2018 13:01:01 -0400 (EDT)
 
 /etc/cron.hourly/autocommit:
 
 Everything up-to-date
 
-From root@esnode1.phillypark.net  Mon Aug 20 15:10:21 2018
-Return-Path: <root@esnode1.phillypark.net>
-X-Original-To: node@localhost
-Delivered-To: node@localhost.phillypark.net
-Received: by esnode1.phillypark.net (Postfix, from userid 0)
+From root@example.localdomain  Mon Aug 20 15:10:21 2018
+Return-Path: <root@example.localdomain>
+X-Original-To: jnovack@localhost
+Delivered-To: jnovack@localhost
+Received: by example.localdomain (Postfix, from userid 0)
     id 558F540A1087; Mon, 20 Aug 2018 15:10:21 -0400 (EDT)
 Date: Mon, 20 Aug 2018 15:10:21 -0400
-To: node@localhost.phillypark.net
+To: jnovack@localhost
 Subject: This is a subject line
 User-Agent: Heirloom mailx 12.5 7/5/10
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
  boundary="=_5b7b121d.c6BdqrtkRqwfNmV5+T958yX/Q/hQeZlktNIZv9eDI1Jz6Lp/"
-Message-Id: <20180820191021.558F540A1087@esnode1.phillypark.net>
-From: root@esnode1.phillypark.net (root)
+Message-Id: <20180820191021.558F540A1087@example.localdomain>
+From: root@example.localdomain (root)
 
 This is a multi-part message in MIME format.
 
@@ -58,6 +58,104 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment;
  filename="notes.txt"
 
-https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-4-on-centos-7
+https://github.com/jnovack/mboxbeat
 
 --=_5b7b121d.c6BdqrtkRqwfNmV5+T958yX/Q/hQeZlktNIZv9eDI1Jz6Lp/--
+
+
+From root@example.localdomain  Mon Aug 20 20:19:55 2018
+Return-Path: <root@example.localdomain>
+X-Original-To: root@localhost
+Delivered-To: root@localhost.localdomain
+Received: by example.localdomain (Postfix, from userid 0)
+	id DCEFC2079CEE; Mon, 20 Aug 2018 20:19:55 -0400 (EDT)
+Date: Mon, 20 Aug 2018 20:19:55 -0400
+To: root@localhost.localdomain
+Subject: This has an attachment
+User-Agent: Heirloom mailx 12.5 7/5/10
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="=_5b7b5aab.krKSQdSdUgNtTlcjWQLUBJDVfMZE8EjkDj617UHDCxU+VcPT"
+Message-Id: <20180821001955.DCEFC2079CEE@example.localdomain>
+From: root@example.localdomain (root)
+
+This is a multi-part message in MIME format.
+
+--=_5b7b5aab.krKSQdSdUgNtTlcjWQLUBJDVfMZE8EjkDj617UHDCxU+VcPT
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="hello"
+
+f0VMRgIBAQAAAAAAAAAAAAIAPgABAAAAEAFAAAAAAABAAAAAAAAAAHABAAAAAAAAAAAAAEAA
+OAADAEAABQAEAAEAAAAFAAAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAAAAAMgEAAAAAAAAyAQAA
+AAAAAAAAIAAAAAAAAQAAAAYAAAA0AQAAAAAAADQBYAAAAAAANAFgAAAAAAANAAAAAAAAAA0A
+AAAAAAAAAAAgAAAAAAAEAAAABAAAAOgAAAAAAAAA6ABAAAAAAADoAEAAAAAAACQAAAAAAAAA
+JAAAAAAAAAAEAAAAAAAAAAQAAAAUAAAAAwAAAEdOVQCGPwgKsqZ2kMf487ygug4CWU4GAQAA
+AAC6DQAAALk0AWAAuwEAAAC4BAAAAM2AuwAAAAC4AQAAAM2AAABIZWxsbyBXb3JsZCEKAC5z
+aHN0cnRhYgAubm90ZS5nbnUuYnVpbGQtaWQALnRleHQALmRhdGEAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+CwAAAAcAAAACAAAAAAAAAOgAQAAAAAAA6AAAAAAAAAAkAAAAAAAAAAAAAAAAAAAABAAAAAAA
+AAAAAAAAAAAAAB4AAAABAAAABgAAAAAAAAAQAUAAAAAAABABAAAAAAAAIgAAAAAAAAAAAAAA
+AAAAABAAAAAAAAAAAAAAAAAAAAAkAAAAAQAAAAMAAAAAAAAANAFgAAAAAAA0AQAAAAAAAA0A
+AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAA
+QQEAAAAAAAAqAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA==
+
+--=_5b7b5aab.krKSQdSdUgNtTlcjWQLUBJDVfMZE8EjkDj617UHDCxU+VcPT--
+
+From root@caterpie.localdomain  Mon Aug 20 21:15:26 2018
+Return-Path: <root@caterpie.localdomain>
+X-Original-To: jnovack@localhost
+Delivered-To: jnovack@localhost.localdomain
+Received: by caterpie.localdomain (Postfix, from userid 0)
+	id D3DE42079CEE; Mon, 20 Aug 2018 21:15:26 -0400 (EDT)
+Date: Mon, 20 Aug 2018 21:15:26 -0400
+To: jnovack@localhost.localdomain
+Subject: The attachment is an image
+User-Agent: Heirloom mailx 12.5 7/5/10
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="=_5b7b67ae.gT0IBSVb6ORCjbf93ivk3KRabA+WT1Q6ycY4Op+6zebJYrEg"
+Message-Id: <20180821011526.D3DE42079CEE@caterpie.localdomain>
+From: root@caterpie.localdomain (root)
+
+This is a multi-part message in MIME format.
+
+--=_5b7b67ae.gT0IBSVb6ORCjbf93ivk3KRabA+WT1Q6ycY4Op+6zebJYrEg
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+and contains a message in the body!
+
+--=_5b7b67ae.gT0IBSVb6ORCjbf93ivk3KRabA+WT1Q6ycY4Op+6zebJYrEg
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="star.png"
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
+ZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tl
+dCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1l
+dGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUu
+Ni1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpS
+REYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgt
+bnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6
+Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRv
+YmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9u
+cy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRp
+ZDphY2JiY2YyNS01MWY0LTQ1MDctOTVjYi04ZjkxNDIxNzBkZGUiIHhtcE1NOkRvY3VtZW50
+SUQ9InhtcC5kaWQ6NzA1M0I2N0FGMzVEMTFFNEEzODdBNDFCREFCMzkxNUMiIHhtcE1NOklu
+c3RhbmNlSUQ9InhtcC5paWQ6NzA1M0I2NzlGMzVEMTFFNEEzODdBNDFCREFCMzkxNUMiIHht
+cDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8
+eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDplODM0NTUyNi1k
+NWZhLTQ2ODctYTRlYS1mMTExYzFmODcyM2EiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6
+YWNiYmNmMjUtNTFmNC00NTA3LTk1Y2ItOGY5MTQyMTcwZGRlIi8+IDwvcmRmOkRlc2NyaXB0
+aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+MJPt2AAA
+AO9JREFUeNpi/LfXgQEPsAJifiDejksBCwN+0AjEwkC8A4j/Y1PAhEezHRC7ALEhEIfhUoTP
+gCY0NguxBnADcQwQ2yOJqQFxAVQOBTACAxEUisZQbABVzIzDVX+B+BYQXwDisyAMMsAfyFgB
+xBwMpIHfQBwN8sJGIPYC4s8kaP4FDdjVsDDYD8ROQPyaCM0/gTgYiDegB+IZaNR9JWBAKBBv
+wRULj4GYk4ABz/FFoy6BtAEC+vgM0EfjH4eGDzLQw2eAAVJ4eEMzEyhwraH5gaALQACULsyA
+eBuS2DEg9gRicyB+gJIS////z0AJAAgwADTbLHhYtht1AAAAAElFTkSuQmCC
+
+--=_5b7b67ae.gT0IBSVb6ORCjbf93ivk3KRabA+WT1Q6ycY4Op+6zebJYrEg--
