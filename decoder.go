@@ -60,6 +60,12 @@ func Decode(msg *mail.Message) *Message {
     } else {
         message.Body = []*Body{newBody(message, message.XHeader.Get("Content-Type"), msg.Body)}
     }
+
+    // Migrate Known Single variables to message.Header
+    for _, k := range []string{"Content-Type", "Date", "From", "Subject", "Message-ID", "Return-Path"} {
+        message.Header[k] = message.XHeader.Get(k)
+        message.XHeader.Del(k)
+    }
     }
 
     return message
