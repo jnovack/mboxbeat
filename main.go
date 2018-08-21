@@ -51,24 +51,6 @@ func main() {
                     return
                 }
                 fmt.Println(string(j))
-
-                // for k, vs := range mail.Header {
-                //     for _, v := range vs {
-                //         fmt.Printf("%s: %s\n", k, v)
-                //     }
-                // }
-                // for _, body := range mail.Bodies {
-                //     fmt.Println("====================================================")
-                //     for k, vs := range body.Header {
-                //         for _, v := range vs {
-                //             fmt.Printf("%s: %s\n", k, v)
-                //         }
-                //     }
-                //     fmt.Println("")
-                //     io.Copy(os.Stdout, body.Content)
-                //     fmt.Println("")
-                // }
-                // fmt.Println("====================================================\n\n")
             }
         } else {
             fmt.Printf("%s\n", err.Error())
