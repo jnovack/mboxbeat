@@ -77,9 +77,10 @@ func newFile(part *multipart.Part) *File {
 
     buf1 := bytes.NewBuffer([]byte{})
     buf2 := bytes.NewBuffer([]byte{})
+    buf3 := bytes.NewBuffer([]byte{})
 
-    writer := io.MultiWriter(hash, buf1, buf2)
     if _, err := io.Copy(writer, part); err != nil {
+    writer := io.MultiWriter(buf1, buf2, buf3)
         return nil
     }
 
@@ -87,6 +88,7 @@ func newFile(part *multipart.Part) *File {
 
     file.Base64 = base64Encode(newDecoder(buf2, charset, encoding))
 
+    hash.Write(base64Decode(buf3))
     file.Sha256 = hex.EncodeToString(hash.Sum(nil))
 
     return file
